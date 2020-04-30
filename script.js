@@ -1,3 +1,5 @@
+$(document).ready(function(){
+
 var timeSlot = [
     {time: "09:00",
     slot: "slot09",
@@ -35,8 +37,10 @@ var timeSlot = [
     slot: "slot17",
     save: "save17"}];
 
+//Date and time
 $("#currentDay").append(Date($.now()));
 
+//loads time, inputs, and save btns
 for (var i = 0; i < timeSlot.length; i++) {
     var timeDiv = $("<div>");
     timeDiv.text(timeSlot[i].time);
@@ -56,10 +60,16 @@ for (var i = 0; i < timeSlot.length; i++) {
     $("#timeTable").append(saveBtnDiv);
 }
 
+//saves to local storage on button click
 $(".saveBtn").on("click", function(){
     $(".input").each(function(){    
         var id = $(this).attr("id");
         var value = $(this).val();
        localStorage.setItem(id, value);
     });   
+});
+
+//load from local storage
+
+
 });
