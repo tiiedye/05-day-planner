@@ -9,10 +9,6 @@ const hour = date.getHours();
 
 //loads time, inputs, and save btns
 for (var i = 9; i < 18; i++) {
-    var row = $("<row>");
-    row.addClass("row");
-    $("#headtable").append(row);
-
     var timeDiv = $("<div>");
     timeDiv.text(`${i}:00`);
     timeDiv.addClass("col-md-1 hour");
@@ -34,9 +30,11 @@ for (var i = 9; i < 18; i++) {
 //saves to local storage on button click
 $(".saveBtn").on("click", function(){
         var id = $(this).attr("id");
-        var value = $(this).siblings("textarea").val()
+        var value = $(this).prev().val()
         timeSlot[id] = value
        localStorage.setItem('todos', JSON.stringify(timeSlot));
+       console.log(timeSlot);
+       console.log(value);
 });   
 
 });
